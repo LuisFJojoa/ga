@@ -3886,7 +3886,7 @@
       const range = 1000000 - 400000;
       const handlePosition = ((value - 400000) / range) * (slider.offsetWidth - handle.offsetWidth);
       handle.style.left = handlePosition + 'px';
-      newAmountValue = value;
+      newAmountValue = value.toString();
       updateValueElement(valueElement, value);
       updateLoanSavingTextContent(feeElement, gaFeeDataKey)
       updateLoanSavingTextContent(savingElement, gaSavingDataKey)
@@ -3898,7 +3898,7 @@
 
       // Get initial mouse position
       const initialX = event.clientX;
-      const initialValue = amountValueElement.textContent.split(",").join("") === (amountValueReference.toString()) ? amountValueReference : newAmountValue;
+      const initialValue = amountValueElement.textContent.split(",").join("") === (amountValueReference.toString()) ? amountValueReference.toString() : newAmountValue.toString();
 
       // Event listener for mouse move
       function handleMouseMove(moveEvent) {
@@ -4072,6 +4072,9 @@
       console.log(gaLoanSavingValues);
       console.log(key);
       console.log(amountValueElement.textContent)
+      console.log(typeof (gaLoanSavingValues[0].price));
+      console.log(typeof (amountValueElement.textContent));
+      console.log(gaLoanSavingValues[0].price === amountValueElement.textContent);
 
       for (const amountInfo of gaLoanSavingValues) {
         console.log(gaLoanSavingValues);
