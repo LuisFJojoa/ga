@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gotahorro Digital V4.0</title>
+  <title>Gotahorro Digital V5.0</title>
   <style>
     @font-face {
       font-family: Bariol;
@@ -4069,7 +4069,10 @@
 
       // Iterate through the gaLoanSavingValues array to find the matching entry based on price
 
+      console.log(gaLoanSavingValues);
+
       for (const amountInfo of gaLoanSavingValues) {
+        console.log(gaLoanSavingValues);
         if (amountInfo.price === amountValueElement.textContent) {
           // Extract options and payment frequency from the matching category
           const options = amountInfo.options;
