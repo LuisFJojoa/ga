@@ -4081,6 +4081,8 @@
           feeFrequencyElement.textContent = paymentFrequency === "S" ? " semanal será: " : " quincenal será: ";
           savingFrequencyElement.textContent = paymentFrequency === "S" ? " semanal será: " : " quincenal será: ";
           break; // Exit the loop once a matching category is found
+        } else {
+          console.log("failed loading object...");
         }
       }
 
