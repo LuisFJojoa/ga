@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gotahorro Digital V5.0</title>
+  <title>Gotahorro Digital V6.0</title>
   <style>
     @font-face {
       font-family: Bariol;
@@ -358,7 +358,7 @@
       font-family: Bariol, sans-serif;
       font-size: 2.5rem;
       line-height: 2.5rem;
-      max-width: 70rem;
+      width: 70rem;
       font-weight: normal;
       text-align: center;
     }
@@ -3820,16 +3820,17 @@
     let gaFeeDataKey = frequencyValueReference + "_CUOTAS_" + paymentFrequency;
     let gaSavingDataKey = frequencyValueReference + "_AHORRO_" + paymentFrequency;
 
-    updateLoanSavingTextContent(feeElement, gaFeeDataKey)
-    updateLoanSavingTextContent(savingElement, gaSavingDataKey)
+    feeFrequencyElement.textContent = " semanal será: ";
+    savingFrequencyElement.textContent = " semanal será: ";
+
+    feeElement.textContent = gaLoanSavingValues[0].options[gaFeeDataKey];
+    savingElement.textContent = gaLoanSavingValues[0].options[gaSavingDataKey];
 
     // Get references to the elements for amount slider
     const frequencySlider = document.getElementById('frequencySlider');
     const frequencyHandle = document.createElement('div');
     frequencyHandle.classList.add('slider-handle');
     frequencySlider.appendChild(frequencyHandle);
-
-    updateFrequencySlider(frequencyHandle, frequencyValueElement, frequencySlider, frequencyValueReference);
 
     // Add click event listeners to both buttons
     weeklyButton.addEventListener('click', function () {
@@ -3878,7 +3879,6 @@
     // Set initial value
     let amountValueReference = 400000;
     let newAmountValue = amountValueReference;
-    updateAmountSlider(amountHandle, amountValueElement, amountSlider, amountValueReference);
 
 
     // Update amount slider position based on value
@@ -3886,7 +3886,7 @@
       const range = 1000000 - 400000;
       const handlePosition = ((value - 400000) / range) * (slider.offsetWidth - handle.offsetWidth);
       handle.style.left = handlePosition + 'px';
-      newAmountValue = value.toString();
+      newAmountValue = value;
       updateValueElement(valueElement, value);
       updateLoanSavingTextContent(feeElement, gaFeeDataKey)
       updateLoanSavingTextContent(savingElement, gaSavingDataKey)
@@ -3898,7 +3898,7 @@
 
       // Get initial mouse position
       const initialX = event.clientX;
-      const initialValue = amountValueElement.textContent.split(",").join("") === (amountValueReference.toString()) ? amountValueReference.toString() : newAmountValue.toString();
+      const initialValue = amountValueElement.textContent.split(",").join("") === (amountValueReference.toString()) ? amountValueReference : newAmountValue;
 
       // Event listener for mouse move
       function handleMouseMove(moveEvent) {
@@ -4072,13 +4072,15 @@
       console.log(gaLoanSavingValues);
       console.log(key);
       console.log(amountValueElement.textContent)
+      console.log((gaLoanSavingValues[0].price));
+      console.log((amountValueElement.textContent));
       console.log(typeof (gaLoanSavingValues[0].price));
       console.log(typeof (amountValueElement.textContent));
       console.log(gaLoanSavingValues[0].price === amountValueElement.textContent);
 
       for (const amountInfo of gaLoanSavingValues) {
-        console.log(gaLoanSavingValues);
-        if (amountInfo.price === amountValueElement.textContent) {
+        if (amountInfo.price == amountValueElement.textContent) {
+          console.log(amountInfo);
           // Extract options and payment frequency from the matching category
           const options = amountInfo.options;
 
