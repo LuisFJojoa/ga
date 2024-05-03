@@ -3887,7 +3887,7 @@
       const handlePosition = ((value - 400000) / range) * (slider.offsetWidth - handle.offsetWidth);
       handle.style.left = handlePosition + 'px';
       newAmountValue = value;
-      updateValueElement(valueElement, value);
+      updateValueElement(valueElement, value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       updateLoanSavingTextContent(feeElement, gaFeeDataKey)
       updateLoanSavingTextContent(savingElement, gaSavingDataKey)
     }
@@ -4062,7 +4062,7 @@
 
 
     function updateValueElement(valueElement, value) {
-      valueElement.textContent = value.toLocaleString();
+      valueElement.textContent = value;
     }
 
     function updateLoanSavingTextContent(valueElement, key) {
@@ -4072,6 +4072,7 @@
       // Iterate through the gaLoanSavingValues array to find the matching entry based on price
 
       // console.log(gaLoanSavingValues);
+      const newValueFormatted = (amountValueElement.textContent.conta)
       console.log(key);
       console.log(amountValueElement.textContent)
       console.log((gaLoanSavingValues[0].price));
