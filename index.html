@@ -3900,6 +3900,8 @@
       const initialX = event.clientX;
       const initialValue = amountValueElement.textContent.split(",").join("") === (amountValueReference.toString()) ? amountValueReference : newAmountValue;
 
+      // console.log(amountValueElement.textContent.split(",").join(""));
+      // console.log(initialValue);
       // Event listener for mouse move
       function handleMouseMove(moveEvent) {
         moveEvent.preventDefault();
@@ -3975,7 +3977,7 @@
       const handlePosition = ((value - minFrequencyReference) / range) * (slider.offsetWidth - handle.offsetWidth);
       handle.style.left = handlePosition + 'px';
       newFrequencyValue = value;
-      updateValueElement(valueElement, value.toLocaleString());
+      updateValueElement(valueElement, value);
       gaFeeDataKey = value.toLocaleString() + "_CUOTAS_" + paymentFrequency;
       gaSavingDataKey = value.toLocaleString() + "_AHORRO_" + paymentFrequency;
       updateLoanSavingTextContent(feeElement, gaFeeDataKey)
@@ -4069,7 +4071,7 @@
 
       // Iterate through the gaLoanSavingValues array to find the matching entry based on price
 
-      console.log(gaLoanSavingValues);
+      // console.log(gaLoanSavingValues);
       console.log(key);
       console.log(amountValueElement.textContent)
       console.log((gaLoanSavingValues[0].price));
