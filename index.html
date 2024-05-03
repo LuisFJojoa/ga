@@ -4070,6 +4070,8 @@
       // Iterate through the gaLoanSavingValues array to find the matching entry based on price
 
       console.log(gaLoanSavingValues);
+      console.log(key);
+      console.log(amountValueElement.textContent)
 
       for (const amountInfo of gaLoanSavingValues) {
         console.log(gaLoanSavingValues);
@@ -4085,7 +4087,7 @@
           savingFrequencyElement.textContent = paymentFrequency === "S" ? " semanal será: " : " quincenal será: ";
           break; // Exit the loop once a matching category is found
         } else {
-          console.log("failed loading object...");
+          console.log("failed loading object V3...");
         }
       }
 
